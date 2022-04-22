@@ -2,6 +2,7 @@
 #include <stdarg.h>
 #include <stdlib.h>
 #include <string.h>
+#include <unistd.h>
 
 /**
  * _printf - print function
@@ -15,6 +16,8 @@ int _printf(const char *format, ...)
 	int i;
 	int length = strlen(format);
 	va_list ptr;
+	char c, d, e;
+	int count = 0;
 
 	va_start(ptr, format);
 
@@ -22,7 +25,9 @@ int _printf(const char *format, ...)
 	{
 		if (format[i] != '%' && format[i] != 92)
 		{
-			putchar(*(format + i));
+			count++;
+			c = (int) *(format + i);
+			write(1, &c, 1);
 		}
 		else
 		{
@@ -30,7 +35,9 @@ int _printf(const char *format, ...)
 
 			if (spec == 'c')
 			{
-				putchar(va_arg(ptr, int));
+				count++;
+				d = va_arg(ptr, int);
+				write(1 ,&d, 1);
 			}
 			if (spec == 's')
 			{
@@ -40,12 +47,15 @@ int _printf(const char *format, ...)
 
 				for (j = 0; j < length2; j++)
 				{
-					putchar(*(mystring + j));
+					count++;
+					e = (int) (*(mystring + j));
+					write(1, &e, 1);
 				}
 			}
 			i++;
 		}
 	}
 	va_end(ptr);
-	return (24);
+	/*printf("count = %d\n", count);*/
+	return (count);
 }
