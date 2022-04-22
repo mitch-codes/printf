@@ -39,7 +39,7 @@ int _printf(const char *format, ...)
 				d = va_arg(ptr, int);
 				write(1 ,&d, 1);
 			}
-			 else if (spec == 's')
+			 if (spec == 's')
 			{
 				int j;
 				char *mystring = va_arg(ptr, char *);
@@ -51,10 +51,6 @@ int _printf(const char *format, ...)
 					e = (int) (*(mystring + j));
 					write(1, &e, 1);
 				}
-			}
-			else
-			{
-				return (-1);
 			}
 			i++;
 		}
