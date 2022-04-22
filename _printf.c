@@ -39,7 +39,7 @@ int _printf(const char *format, ...)
 				d = va_arg(ptr, int);
 				write(1 ,&d, 1);
 			}
-			 if (spec == 's')
+			if (spec == 's')
 			{
 				int j;
 				char *mystring = va_arg(ptr, char *);
