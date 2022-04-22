@@ -5,6 +5,26 @@
 #include <unistd.h>
 
 /**
+ * printstring - print string
+ *
+ * @course: string being printed
+ * @length2: length of string
+ * Return: number of charcters being printed
+ */
+int printstring(char *course, int length2)
+{
+	char e;
+	int j;
+
+	for (j = 0; j < length2; j++)
+	{
+		e = (int) (*(course + j));
+		write(1, &e, 1);
+	}
+	return (j);
+}
+
+/**
  * _printf - print function
  *
  * @format: argument being printed
@@ -16,11 +36,10 @@ int _printf(const char *format, ...)
 	int i;
 	int length = strlen(format);
 	va_list ptr;
-	char c, d, e;
+	char c, d;
 	int count = 0;
 
 	va_start(ptr, format);
-
 	for (i = 0; i < length; i++)
 	{
 		if (format[i] != '%' && format[i] != 92)
@@ -41,21 +60,15 @@ int _printf(const char *format, ...)
 			}
 			if (spec == 's')
 			{
-				int j;
 				char *mystring = va_arg(ptr, char *);
 				int length2 = strlen(mystring);
 
-				for (j = 0; j < length2; j++)
-				{
-					count++;
-					e = (int) (*(mystring + j));
-					write(1, &e, 1);
-				}
+				count = count + printstring(mystring, length2);
 			}
 			i++;
 		}
 	}
 	va_end(ptr);
-	/*printf("count = %d\n", count);*/
 	return (count);
 }
+
