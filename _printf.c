@@ -37,7 +37,7 @@ int _printf(const char *format, ...)
 			{
 				count++;
 				d = va_arg(ptr, int);
-				write(1 ,&d, 1);
+				write(1, &d, 1);
 			}
 			if (spec == 's')
 			{
