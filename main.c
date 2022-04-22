@@ -11,7 +11,7 @@ int main(void)
 {
     _printf("Character:[%c]\n", 'H');
     _printf("String:[%s] \n hello \n", "I am a string !");
-    /*printf("Character:[%c]\n", 'H');*/
+    /*printf("Character: \a [%c]\n", 'H');*/
     /*printf("String:[%s]\n", "I am a string !");*/
     return (0);
  }

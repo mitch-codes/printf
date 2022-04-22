@@ -54,7 +54,7 @@ int _printf(const char *format, ...)
 	va_start(ptr, format);
 	for (i = 0; i < length; i++)
 	{
-		if (format[i] != '%' && format[i] != 92)
+		if (format[i] != '%')
 		{
 			count++;
 			c = (int) *(format + i);
