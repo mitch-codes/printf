@@ -20,7 +20,7 @@ int _printf(const char *format, ...)
 
 	for (i = 0; i < length; i++)
 	{
-		if (format[i] != '%' || format[i] != '/')
+		if (format[i] != '%')
 		{
 			putchar(*(format + i));
 		}
@@ -47,5 +47,5 @@ int _printf(const char *format, ...)
 		}
 	}
 	va_end(ptr);
-	return (0);
+	return (24);
 }
