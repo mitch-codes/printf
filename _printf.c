@@ -69,16 +69,12 @@ int _printf(const char *format, ...)
 				d = va_arg(ptr, int);
 				count = count + printcharacter(d);
 			}
-			else if (spec == 's')
+			if (spec == 's')
 			{
 				char *mystring = va_arg(ptr, char *);
 				int length2 = strlen(mystring);
 
 				count = count + printstring(mystring, length2);
-			}
-			else
-			{
-				return (-1);
 			}
 			i++;
 		}
