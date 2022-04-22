@@ -5,6 +5,18 @@
 #include <unistd.h>
 
 /**
+ * printcharacter - print string
+ *
+ * @charac: char being printed
+ * Return: number of charcters being printed
+ */
+int printcharacter(char charac)
+{
+	write(1, &charac, 1);
+	return (1);
+}
+
+/**
  * printstring - print string
  *
  * @course: string being printed
@@ -42,7 +54,7 @@ int _printf(const char *format, ...)
 	va_start(ptr, format);
 	for (i = 0; i < length; i++)
 	{
-		if (format[i] != '%' && format[i] != 92)
+		if (format[i] != '%')
 		{
 			count++;
 			c = (int) *(format + i);
@@ -54,16 +66,19 @@ int _printf(const char *format, ...)
 
 			if (spec == 'c')
 			{
-				count++;
 				d = va_arg(ptr, int);
-				write(1, &d, 1);
+				count = count + printcharacter(d);
 			}
-			if (spec == 's')
+			else if (spec == 's')
 			{
 				char *mystring = va_arg(ptr, char *);
 				int length2 = strlen(mystring);
 
 				count = count + printstring(mystring, length2);
+			}
+			else
+			{
+				return (-1);
 			}
 			i++;
 		}
